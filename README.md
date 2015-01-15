@@ -12,7 +12,7 @@ App. All credit go to them.
 Replace the base-icon.png file with your own, MakeAppIcon recommends a 1024x1024
 image, fire up a terminal and run:
 ```
-$: casperjs makeAppIcon.js
+$: casperjs --web-security=no makeAppIcon.js
 ```
 That will upload your base icon file, download all the generated files on the
 "out" directory, drag and drop into XCode and you are good to go.
