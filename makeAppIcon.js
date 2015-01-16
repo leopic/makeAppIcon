@@ -1,34 +1,62 @@
-var casper = require('casper').create(),
+// Simple CLI for http://makeappicon.com
+// https://github.com/leopic/makeAppIcon
+
+var casper = require('casper').create({
+      pageSettings: {
+        webSecurityEnabled: false
+      }
+    }),
     downloadUrl = '',
     paths = [];
 
 casper.userAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X)');
 
 casper.start('http://makeappicon.com/', function() {
-  this.echo('[^] Uploading base icon...');
+  var banner = '[ ↑] Uploading base icon to http://makeappicon.com ...\n';
+  banner += '                      .___________.\n';
+  banner += '                      |           |\n';
+  banner += '       ___________.   |  |    /~\\ |\n';
+  banner += '      / __   __  /|   | _ _   |_| |\n';
+  banner += '     / /:/  /:/ / |   !________|__!\n';
+  banner += '    / /:/  /:/ /  |            |\n';
+  banner += '   / /:/  /:/ /   |____________!\n';
+  banner += '  / /:/  /:/ /    |\n';
+  banner += ' / /:/  /:/ /     |\n';
+  banner += '/  ~~   ~~ /      |\n';
+  banner += '|~~~~~~~~~~|      |\n';
+  banner += '|    ::    |     /\n';
+  banner += '|    ==    |    /\n';
+  banner += '|    ::    |   /\n';
+  banner += '|    ::    |  /\n';
+  banner += '|    ::  @ | /\n';
+  banner += '!__________!/\n';
+  this.echo(banner);
   this.fill('form', {
-    'file': '/Users/leo/Sites/automateGenerationOfIcons/base-icon.png'
+    'file': 'base-icon.png'
   });
 });
 
 casper.waitForSelector('.icons-wrapper img', function(response) {
   downloadUrl = response.url;
-  var hash = downloadUrl.split('/')[4];
-  var sizes = ['Small@2x', 'Small@3x', '40@2x', '40@3x', '60@2x', '60@3x', 'Small', '40', '40@2x', '76', '76@2x'];
-  this.echo('[ ] Your hash is: ' + hash);
-  for (var i = 0; i < sizes.length; i++) {
-    paths.push('http://makeappicon.com/upload/' + hash + '/ios/AppIcon.appiconset/Icon-' + sizes[i] + '.png');
-  }
+  var hash = downloadUrl.split('/')[4],
+      iconSizes = ['40', '40@2x', '40@3x', '60@2x', '60@3x', '76', '76@2x', 'Small', 'Small@2x', 'Small@3x'];
+
+  this.echo('[ →] Your generated files can be re-downloaded at http://makeappicon.com/download/' + hash);
+  iconSizes.forEach(function(size) {
+    paths.push('http://makeappicon.com/upload/' + hash + '/ios/AppIcon.appiconset/Icon-' + size + '.png');
+  });
 });
 
 casper.thenOpen(downloadUrl, function() {
-    for (var i = 0; i < paths.length; i++) {
-      var fileName = paths[i].split('/')[7];
-      this.echo('[>] Downloading image: '+ fileName);
-      this.download(paths[i], 'out/' + fileName, 'GET');
-    }
+  var self = this;
+    paths.forEach(function(iconUrl) {
+      var fileName = iconUrl.split('/')[7];
+      self.echo('[ ↓] Downloading image: ' + fileName);
+      self.download(iconUrl, 'AppIcon.appiconset/' + fileName, 'GET');
+    });
 });
 
 casper.run(function() {
-  this.echo('All set here.').exit();
+  this.echo('[ →] All set, drag and drop the "AppIcon.appiconset" directory into your image assets in XCode.')
+      .exit();
 });

@@ -1,22 +1,22 @@
 # makeAppIcon.js
-makeAppIcon.js is a CLI interface for http://makeappicon.com/ a great site to
-help you balance the madness of creating all different icon sizes for your iOS
-App. All credit go to them.
+makeAppIcon.js is a CLI interface for http://makeappicon.com/ a great site to help you balance the madness
+of creating all different icon sizes for your iOS App. All credit go to them, I'm just lazy and wanted to
+do as little clicks as possible.
 
 ## Requirements:
-- node
-- phantomJS
-- casperJS
+- casperJS ~ 1.1.0-beta3
 
 ## Usage:
-Replace the base-icon.png file with your own, MakeAppIcon recommends a 1024x1024
-image, fire up a terminal and run:
+Replace the base-icon.png file with your own, MakeAppIcon recommends a 1024x1024px image, fire up a
+terminal and run:
 ```
-$: casperjs --web-security=no makeAppIcon.js
+$: casperjs makeAppIcon.js
 ```
-That will upload your base icon file, download all the generated files on the
-"out" directory, drag and drop into XCode and you are good to go.
+That will upload your base icon file to the service, download all the generated files and download the
+generated files into the *AppIcon.appiconset* directory. Open XCode, open your Images.xcassets pane and delete
+the default AppIcon entry, now drag and drop the entire *AppIcon.appiconset* directory into that pane and
+you should be good to go! Build your app and you should see your new icon all over the place.
 
 ## Credits:
-- http://makeappicon.com 
-
+- http://makeappicon.com
+- Toaster http://www.retrojunkie.com/asciiart/food/toasters.htm
