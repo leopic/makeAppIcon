@@ -1,22 +1,28 @@
-# makeAppIcon.js
-makeAppIcon.js is a CLI interface for http://makeappicon.com/ a great site to help you balance the madness
-of creating all different icon sizes for your iOS App. All credit go to them, I'm just lazy and wanted to
-do as little clicks as possible.
-
-## Requirements:
-- casperJS ~ 1.1.0-beta3
+# makeappicon
+If you have never used http://makeappicon.com/ to generate all icons for your iOS Apps you are missing out!
+Well, were missing out, this module aims to enhance the experience of the site plus allow give you a drag
+and drop ready icon set!
 
 ## Usage:
-Replace the base-icon.png file with your own, MakeAppIcon recommends a 1024x1024px image, fire up a
-terminal and run:
+Fire up a terminal and type:
 ```
-$: casperjs makeAppIcon.js
+$: npm install -g makeappicon
 ```
-That will upload your base icon file to the service, download all the generated files and download the
-generated files into the *AppIcon.appiconset* directory. Open XCode, open your Images.xcassets pane and delete
-the default AppIcon entry, now drag and drop the entire *AppIcon.appiconset* directory into that pane and
-you should be good to go! Build your app and you should see your new icon all over the place.
+Create a 1024x1024 png image and name it "base-icon.png", then type:
+```
+$: makeappicon [--base-icon pathToBaseIcon.png --output-dir pathToOutputDir]
+```
+That take upload your base icon file and generate the 10 images that you need into the *AppIcon.appiconset*
+directory. Open XCode, open your *Images.xcassets* pane and delete the default AppIcon entry, now drag and
+drop the entire *AppIcon.appiconset* directory into that pane and you should be good to go! Build your app
+and you should see your new icon all over the place.
 
 ## Credits:
-- http://makeappicon.com
-- Toaster http://www.retrojunkie.com/asciiart/food/toasters.htm
+- http://makeappicon.com for the idea
+- Toaster ASCII Art from http://www.retrojunkie.com/asciiart/food/toasters.htm
+
+## Todo:
+- Tests
+
+### Other
+This module is in no way, shape or form associated with OURSKY.

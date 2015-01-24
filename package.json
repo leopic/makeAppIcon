@@ -1,0 +1,40 @@
+{
+  "name": "makeappicon",
+  "version": "1.0.0",
+  "description": "Generate an iconset for your iOS App.",
+  "preferGlobal": "true",
+  "bin": {
+    "makeappicon": "./bin/index.js"
+  },
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leopic/makeAppIcon.git"
+  },
+  "keywords": [
+    "app",
+    "appicon",
+    "iconset",
+    "ios",
+    "ios8",
+    "makeappicon",
+    "objective-c"
+    "swift",
+    "xcode"
+  ],
+  "author": "Leo Picado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leopic/makeAppIcon/issues"
+  },
+  "homepage": "https://github.com/leopic/makeAppIcon",
+  "dependencies": {
+    "gm": "^1.17.0",
+    "lodash": "^2.4.1",
+    "yargs": "^1.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
