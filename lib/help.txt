@@ -1,0 +1,9 @@
+Usage: makeappicon --base-icon ICON_PATH
+
+Description:
+  makeappicon helps you generate all images needed for your
+  iOS project, ready to drag and drop into Xcode.
+
+Options:
+-h                          Show this message.
+--base-icon     ICON_PATH   Full path to base file to use to generate the icon set.

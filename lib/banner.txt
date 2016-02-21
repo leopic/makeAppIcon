@@ -6,10 +6,10 @@
     / /:/  /:/ /  |            |
    / /:/  /:/ /   |____________!
   / /:/  /:/ /    |
- / /:/  /:/ /     | Drag and drop the generated
-/  ~~   ~~ /      | directory into XCode's image
-|~~~~~~~~~~|      | assets pane and you are good to go!
-|    ::    |     /
+ / /:/  /:/ /     | Remove the existing "AppIcon" asset,
+/  ~~   ~~ /      | from Assets.xcassets drag and drop
+|~~~~~~~~~~|      | the generated directory into XCode's
+|    ::    |     /  image assets pane and you are good to go!
 |    ==    |    /
 |    ::    |   /
 |    ::    |  /
