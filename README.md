@@ -45,3 +45,6 @@ If you get a message saying "this most likely means the gm/convert binaries can'
 ## Other
 This module is in no way, shape or form associated with OURSKY.
 
+## License
+
+[MIT](/license) © [Leo Picado](https://github.com/leopic)
