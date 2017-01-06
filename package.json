@@ -1,6 +1,6 @@
 {
   "name": "makeappicon",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate an iconset for your iOS App.",
   "preferGlobal": "true",
   "bin": {
