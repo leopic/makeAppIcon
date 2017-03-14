@@ -4,8 +4,8 @@ Well, were missing out, this module aims to enhance the experience of the site p
 and drop ready icon set!
 
 ## Requirements
-
-You need `gm/covert` binaries in your `$PATH` as [explained here](http://stackoverflow.com/questions/17756587/installing-graphicsmagick-on-mac-os-x-10-8). On MacOS, run the following:
+- Homebrew https://brew.sh/
+- You need `gm/covert` binaries in your `$PATH` as [explained here](http://stackoverflow.com/questions/17756587/installing-graphicsmagick-on-mac-os-x-10-8). On MacOS, run the following:
 
 ```bash
 brew uninstall imagemagick graphicsmagick libpng jpeg
