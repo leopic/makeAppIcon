@@ -1,0 +1,13 @@
+sudo: required
+language: objective-c
+
+# 10.13 (see https://docs.travis-ci.com/user/osx-ci-environment/#OS-X-Version)
+osx_image: xcode9.3
+
+script:
+  - brew uninstall imagemagick graphicsmagick libpng jpeg | true
+  - brew cleanup -s
+  - brew install node graphicsmagick
+  - npm install -g ./
+  - makeappicon --base-icon ./test/Icon-1024.png
+  - ls -la ./AppIcon.appiconset
