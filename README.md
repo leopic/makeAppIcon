@@ -1,4 +1,7 @@
 # makeappicon
+
+[![Build Status](https://travis-ci.com/GabLeRoux/makeAppIcon.svg?branch=master)](https://travis-ci.com/GabLeRoux/makeAppIcon)
+
 If you have never used [makeappicon.com](http://makeappicon.com/) to generate all icons for your iOS Apps you are missing out!
 Well, were missing out, this module aims to enhance the experience of the site plus allow give you a drag
 and drop ready icon set!
