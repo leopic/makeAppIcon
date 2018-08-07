@@ -2,14 +2,12 @@
 
 [![Build Status](https://travis-ci.com/GabLeRoux/makeAppIcon.svg?branch=master)](https://travis-ci.com/GabLeRoux/makeAppIcon)
 
-If you have never used [makeappicon.com](http://makeappicon.com/) to generate all icons for your iOS Apps you are missing out!
-Well, were missing out, this module aims to enhance the experience of the site plus allow give you a drag
-and drop ready icon set!
+Open source alternative to [makeappicon.com](http://makeappicon.com/) to generate all icons for your iOS Apps. This module generates all ios icons with a single command and produces a drag and drop ready `AppIcon.appiconset`!
 
 ## Requirements
 
-- [Homebrew](https://brew.sh/)
-- You need `gm/covert` binaries in your `$PATH` as [explained here](http://stackoverflow.com/questions/17756587/installing-graphicsmagick-on-mac-os-x-10-8). On MacOS, run the following:
+- [Homebrew](https://brew.sh/) to install packages on MacOS
+- `gm/covert` binariES in your `$PATH` as [explained here](http://stackoverflow.com/questions/17756587/installing-graphicsmagick-on-mac-os-x-10-8). On MacOS, run the following:
 
 ```bash
 brew uninstall imagemagick graphicsmagick libpng jpeg
@@ -25,7 +23,7 @@ Fire up a terminal and type:
 npm install -g makeappicon
 ```
 
-Create a 1024x1024 png image and call the script as such:
+Create a 1024x1024 png image and execute the script as such:
 
 ```bash
 makeappicon --base-icon pathToBaseIcon.png
