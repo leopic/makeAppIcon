@@ -45,11 +45,6 @@ If you get a message saying "this most likely means the gm/convert binaries can'
 - [makeappicon.com](http://makeappicon.com) for the idea
 - Toaster ASCII Art from [retrokunkie](http://www.retrojunkie.com/asciiart/food/toasters.htm)
 
-## Todo:
-
-- [x] Functional tests
-- [ ] Unit tests
-
 ## Disclaimer
 
 This module is in no way, shape or form associated with OURSKY.
