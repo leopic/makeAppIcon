@@ -4,6 +4,16 @@ language: objective-c
 # 10.13 (see https://docs.travis-ci.com/user/osx-ci-environment/#OS-X-Version)
 osx_image: xcode9.3
 
+env:
+- NODE_VERSION="v9.10.1"
+
+before_install:
+  # we need a newer version of node not included in the Xcode 9.3 image
+  - git clone https://github.com/creationix/nvm.git /tmp/.nvm
+  - source /tmp/.nvm/nvm.sh
+  - nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+
 script:
   - brew uninstall imagemagick graphicsmagick libpng jpeg | true
   - brew cleanup -s
@@ -11,5 +21,7 @@ script:
   - node --version
   - npm --version
   - npm install -g ./
+  - npm install jasmine@^3.2.0
+  - npm test
   - makeappicon --base-icon ./test/Icon-1024.png
   - ls -la ./AppIcon.appiconset

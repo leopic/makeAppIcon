@@ -36,8 +36,11 @@
     "lodash": "4.17.5",
     "yargs": "^1.3.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^3.2.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-init": "./node_modules/jasmine/bin/jasmine.js init",
+    "test": "./node_modules/jasmine/bin/jasmine.js"
   }
 }
