@@ -33,7 +33,7 @@
   "homepage": "https://github.com/leopic/makeAppIcon",
   "dependencies": {
     "gm": "^1.17.0",
-    "lodash": "4.17.5",
+    "lodash": ">=4.17.13",
     "yargs": "^1.3.3"
   },
   "devDependencies": {
