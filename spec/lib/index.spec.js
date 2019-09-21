@@ -3,6 +3,10 @@
 const lib = require('../../lib/index'),
     ERROR_CODE = require('../../lib/errors');
 
+const path = require('path');
+const fs = require('fs');
+
+
 describe('Basic functionality', () => {
     it('displays the help banner when no params are given', function () {
         lib({})
@@ -25,10 +29,30 @@ describe('Basic functionality', () => {
         const path = require('path');
         const filePath = `${process.cwd() + path.sep}test/icon-1024.png`;
 
-        lib({iconPath: filePath})
+        const directoryPath = path.join(__dirname, '../../AppIcon.appiconset');
+
+      lib({iconPath: filePath})
             .then(result => {
-                expect(result).toContain('Created 15 images.');
+                // expect(result).toContain('Created 15 images.');
+
+              fs.readdir(directoryPath, function (err, files) {
+                //handling error
+                if (err) {
+                  done();
+                  return console.log('Unable to scan directory: ' + err);
+                }
+                //listing all files using forEach
+                // files.forEach(function (file) {
+                //   // Do whatever you want to do with the file
+                //   console.log(file);
+                // });
+
+                expect(files.length).toEqual(16);
+
                 done();
+              });
+
+                // done();
             })
     });
 });
