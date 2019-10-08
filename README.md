@@ -1,6 +1,7 @@
 # makeappicon
 
 [![Build Status](https://travis-ci.com/leopic/makeAppIcon.svg?branch=master)](https://travis-ci.com/leopic/makeAppIcon)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=leopic_makeAppIcon&metric=alert_status)](https://sonarcloud.io/dashboard?id=leopic_makeAppIcon)
 
 Open source alternative to [makeappicon.com](http://makeappicon.com/) to generate all icons for your iOS Apps. This module generates all ios icons with a single command and produces a drag and drop ready `AppIcon.appiconset`!
 
