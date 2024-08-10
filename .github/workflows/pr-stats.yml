@@ -2,9 +2,6 @@ name: PR Stats
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - stats
 
 jobs:
   pr-stats:
@@ -13,17 +10,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Run pr_stats.sh
+      - name: Generate PR stats
         env:
           GITHUB_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
+          NUM_PRS: 500
         run: |
-
-          # GitHub repository information
-          REPO=${REPO}
-
-          # Number of PRs to fetch
-          NUM_PRS=500
 
           # Fetch the last NUM_PRS PRs
           prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
@@ -39,27 +31,27 @@ jobs:
 
           # Loop through each PR number
           for pr in $prs; do
-          # Fetch the PR details
-          pr_details=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-              "https://api.github.com/repos/$REPO/pulls/$pr")
+            # Fetch the PR details
+            pr_details=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+                "https://api.github.com/repos/$REPO/pulls/$pr")
 
-          # Extract lines added and deleted
-          lines_added=$(echo $pr_details | jq '.additions')
-          lines_deleted=$(echo $pr_details | jq '.deletions')
+            # Extract lines added and deleted
+            lines_added=$(echo $pr_details | jq '.additions')
+            lines_deleted=$(echo $pr_details | jq '.deletions')
 
-          # Calculate lines changed
-          lines_changed=$((lines_added + lines_deleted))
+            # Calculate lines changed
+            lines_changed=$((lines_added + lines_deleted))
 
-          # Accumulate totals
-          total_added=$((total_added + lines_added))
-          total_deleted=$((total_deleted + lines_deleted))
-          total_changed=$((total_changed + lines_changed))
+            # Accumulate totals
+            total_added=$((total_added + lines_added))
+            total_deleted=$((total_deleted + lines_deleted))
+            total_changed=$((total_changed + lines_changed))
 
-          # Add to the list of lines changed
-          lines_changed_list+=($lines_changed)
+            # Add to the list of lines changed
+            lines_changed_list+=($lines_changed)
 
-          # Output individual PR stats
-          echo "PR #$pr - Added: $lines_added, Deleted: $lines_deleted, Changed: $lines_changed"
+            # Output individual PR stats
+            echo "PR #$pr - Added: $lines_added, Deleted: $lines_deleted, Changed: $lines_changed"
           done
 
           # Calculate average lines changed
@@ -67,7 +59,8 @@ jobs:
           average_changed=$((total_changed / num_prs))
 
           # Output total stats
-          echo "Total lines added:      $total_added"
-          echo "Total lines deleted:    $total_deleted"
-          echo "Total lines changed:    $total_changed"
-          echo "Average lines changed:  $average_changed"
+          echo "| Total PRs:              $num_prs"
+          echo "| Total lines added:      $total_added"
+          echo "| Total lines deleted:    $total_deleted"
+          echo "| Total lines changed:    $total_changed"
+          echo "| Average lines changed:  $average_changed"
