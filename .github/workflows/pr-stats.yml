@@ -57,8 +57,17 @@ jobs:
           average_changed=$((total_changed / num_prs))
 
           # Output total stats
-          echo "| Total PRs:              $num_prs"
-          echo "| Total lines added:      $total_added"
-          echo "| Total lines deleted:    $total_deleted"
-          echo "| Total lines changed:    $total_changed"
-          echo "| Average lines changed:  $average_changed"
+          echo ""
+
+          printf "+-------------------------+------------------+\n"
+          printf "| %-23s | %-16s |\n" "Metric" "Value"
+          printf "+-------------------------+------------------+\n"
+
+          printf "| %-23s | %-16s |\n" "Total PRs" "$num_prs"
+          printf "| %-23s | %-16s |\n" "Total lines added" "$total_added"
+          printf "| %-23s | %-16s |\n" "Total lines deleted" "$total_deleted"
+          printf "| %-23s | %-16s |\n" "Total lines changed" "$total_changed"
+          printf "| %-23s | %-16s |\n" "Average lines changed" "$average_changed"
+
+          printf "+-------------------------+------------------+\n"
+          echo ""
