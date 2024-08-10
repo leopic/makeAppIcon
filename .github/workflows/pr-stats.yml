@@ -20,7 +20,7 @@ jobs:
         run: |
 
           # GitHub repository information
-          REPO=${github.repository}
+          REPO=${REPO}
 
           # Number of PRs to fetch
           NUM_PRS=500
