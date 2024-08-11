@@ -2,13 +2,9 @@ const axios = require("axios");
 const moment = require("moment");
 
 // GitHub repository information
-const REPO = process.env.REPO;
-
-// GitHub Personal Access Token (PAT) for authentication
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-
-// Number of PRs to fetch
-const NUM_PRS = process.env.NUM_PRS || 500;
+const REPO = process.argv[2];
+const GITHUB_TOKEN = process.argv[3];
+const NUM_PRS = process.argv[4] || 500;
 
 // Function to calculate the time difference in hours
 const calculateTimeDifference = (startDate, endDate) => {

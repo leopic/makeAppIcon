@@ -13,11 +13,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "lts/iron"
-      - name: Install dependencies
-        run: cd scripts && yarn install
-      - name: Calculate time to first review
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-          NUM_PRS: 20
-        run: node scripts/time-to-first-review.js
+      - name: Run Time to First Review Action
+        uses: ./
+        with:
+          repo: "leopic/makeAppIcon"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          num_prs: 100

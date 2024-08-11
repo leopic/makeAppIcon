@@ -1,0 +1,20 @@
+name: "Time to First Review"
+description: "Calculate the time to first review for the last N PRs"
+inputs:
+  repo:
+    description: "GitHub repository (owner/repo)"
+    required: true
+  github_token:
+    description: "GitHub Personal Access Token (PAT)"
+    required: true
+  num_prs:
+    description: "Number of PRs to fetch"
+    required: false
+    default: 500
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.repo }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.num_prs }}

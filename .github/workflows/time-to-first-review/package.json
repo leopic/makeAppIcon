@@ -1,5 +1,5 @@
 {
-  "name": "scripts",
+  "name": "time-to-first-review",
   "version": "1.0.0",
   "main": "time-to-first-review.js",
   "license": "MIT",
