@@ -15,4 +15,4 @@ jobs:
         with:
           repo: "leopic/makeAppIcon"
           github_token: ${{ github.token }}
-          num_prs: 100
+          num_prs: 5
