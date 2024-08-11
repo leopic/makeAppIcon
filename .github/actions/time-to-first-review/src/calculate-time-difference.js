@@ -1,4 +1,4 @@
-const require = require("moment");
+const moment = require("moment");
 
 module.exports = (startDate, endDate) => {
   const start = moment(startDate);
