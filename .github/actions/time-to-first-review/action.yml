@@ -12,9 +12,5 @@ inputs:
     required: false
     default: 500
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.repo }}
-    - ${{ inputs.github_token }}
-    - ${{ inputs.num_prs }}
+  using: "node20"
+  main: "index.js"
