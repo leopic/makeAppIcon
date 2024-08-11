@@ -1,8 +1,8 @@
 const core = require("@actions/core");
 
-import { calculateTimeDifference } from "./src/calculate-time-difference";
-import { fetchPullRequests } from "./src/fetch-pull-requests";
-import { fetchReviews } from "./src/fetch-reviews";
+const fetchPullRequests = require("./src/fetch-pull-requests");
+const fetchReviews = require("./src/fetch-reviews");
+const calculateTimeDifference = require("./src/calculate-time-difference");
 
 try {
   // GitHub repository information
