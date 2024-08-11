@@ -1,4 +1,4 @@
-import moment from "moment";
+const require = require("moment");
 
 module.exports = (startDate, endDate) => {
   const start = moment(startDate);

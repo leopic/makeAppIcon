@@ -1,9 +1,9 @@
-import { get } from "axios";
+const require = require("axios");
 
 // Fetch reviews for a specific PR
 module.exports = async (repo, token, prNumber) => {
   try {
-    const response = await get(
+    const response = await axios.get(
       `https://api.github.com/repos/${repo}/pulls/${prNumber}/reviews`,
       {
         headers: { Authorization: `token ${token}` },
