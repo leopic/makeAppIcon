@@ -9,12 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/iron"
       - name: Run Time to First Review Action
-        uses: ./
+        uses: ./.github/actions/time-to-first-review
         with:
           repo: "leopic/makeAppIcon"
           github_token: ${{ secrets.GITHUB_TOKEN }}
