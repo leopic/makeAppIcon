@@ -1,67 +1,23 @@
-const axios = require("axios");
-const moment = require("moment");
 const core = require("@actions/core");
+
+import { calculateTimeDifference } from "./src/calculate-time-difference";
+import { fetchPullRequests } from "./src/fetch-pull-requests";
+import { fetchReviews } from "./src/fetch-reviews";
 
 try {
   // GitHub repository information
-  const REPO = core.getInput("repo");
-  const GITHUB_TOKEN = core.getInput("github_token");
-  const NUM_PRS = core.getInput("num_prs") || 500;
-
-  console.debug(`REPO: ${REPO}`);
-  console.debug(`GITHUB_TOKEN: ${GITHUB_TOKEN}`);
-  console.debug(`NUM_PRS: ${NUM_PRS}`);
-
-  // Function to calculate the time difference in hours
-  const calculateTimeDifference = (startDate, endDate) => {
-    const start = moment(startDate);
-    const end = moment(endDate);
-    return end.diff(start, "hours");
-  };
-
-  // Fetch the last NUM_PRS PRs
-  const fetchPullRequests = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.github.com/repos/${REPO}/pulls?state=closed&per_page=${NUM_PRS}`,
-        {
-          headers: { Authorization: `token ${GITHUB_TOKEN}` },
-        }
-      );
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching pull requests:", error.message);
-      return [];
-    }
-  };
-
-  // Fetch reviews for a specific PR
-  const fetchReviews = async (prNumber) => {
-    try {
-      const response = await axios.get(
-        `https://api.github.com/repos/${REPO}/pulls/${prNumber}/reviews`,
-        {
-          headers: { Authorization: `token ${GITHUB_TOKEN}` },
-        }
-      );
-      return response.data;
-    } catch (error) {
-      console.error(
-        `Error fetching reviews for PR #${prNumber}:`,
-        error.message
-      );
-      return [];
-    }
-  };
+  const repo = core.getInput("repo");
+  const gitHubToken = core.getInput("github_token");
+  const maxPRs = core.getInput("num_prs") || 500;
 
   // Main function
   const main = async () => {
-    const prs = await fetchPullRequests();
+    const prs = await fetchPullRequests(repo, gitHubToken, maxPRs);
     let timesToFirstReview = [];
 
     for (const pr of prs) {
       const prCreatedAt = pr.created_at;
-      const reviews = await fetchReviews(pr.number);
+      const reviews = await fetchReviews(repo, gitHubToken, pr.number);
 
       // Find the first review date
       const firstReviewDate = reviews
@@ -92,7 +48,7 @@ try {
       const average = total / timesToFirstReview.length;
       console.log(`Average time to first review: ${average.toFixed(2)} hours`);
     } else {
-      console.log(`No reviews found for the last ${NUM_PRS} PRs.`);
+      console.log(`No reviews found for the last ${maxPRs} PRs.`);
     }
   };
 

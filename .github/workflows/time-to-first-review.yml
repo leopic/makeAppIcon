@@ -9,10 +9,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Print environment variables
-        run: env
-      - name: List files in the workspace
-        run: ls -la
       - name: Run Time to First Review Action
         uses: ./.github/actions/time-to-first-review
         with:
