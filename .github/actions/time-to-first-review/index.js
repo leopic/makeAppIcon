@@ -1,7 +1,6 @@
 const axios = require("axios");
 const moment = require("moment");
 const core = require("@actions/core");
-// const github = require("@actions/github");
 
 try {
   // GitHub repository information
