@@ -1,0 +1,23 @@
+name: PR Stats
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pr-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/iron"
+      - name: Install dependencies
+        run: cd scripts && yarn install
+      - name: Calculate time to first review
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          NUM_PRS: 20
+        run: node scripts/time-to-first-review.js

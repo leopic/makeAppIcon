@@ -1,0 +1,10 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "main": "time-to-first-review.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "moment": "^2.30.1"
+  }
+}
