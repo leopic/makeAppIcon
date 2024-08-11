@@ -1,9 +1,8 @@
 const core = require("@actions/core");
 
-const fetchPullRequests = require("./src/fetch-pull-requests").default;
-const fetchReviews = require("./src/fetch-reviews").default;
-const calculateTimeDifference =
-  require("./src/calculate-time-difference").default;
+const fetchPullRequests = require("./src/fetch-pull-requests");
+const fetchReviews = require("./src/fetch-reviews");
+const calculateTimeDifference = require("./src/calculate-time-difference");
 
 try {
   // GitHub repository information
