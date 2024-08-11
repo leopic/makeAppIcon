@@ -1,14 +1,14 @@
-const core = require("@actions/core");
+import { getInput, setFailed } from "@actions/core";
 
-const fetchPullRequests = require("./src/fetch-pull-requests");
-const fetchReviews = require("./src/fetch-reviews");
-const calculateTimeDifference = require("./src/calculate-time-difference");
+import fetchPullRequests from "./src/fetch-pull-requests";
+import fetchReviews from "./src/fetch-reviews";
+import calculateTimeDifference from "./src/calculate-time-difference";
 
 try {
   // GitHub repository information
-  const repo = core.getInput("repo");
-  const gitHubToken = core.getInput("github_token");
-  const maxPRs = core.getInput("num_prs") || 500;
+  const repo = getInput("repo");
+  const gitHubToken = getInput("github_token");
+  const maxPRs = getInput("num_prs") || 500;
 
   // Main function
   const main = async () => {
@@ -54,5 +54,5 @@ try {
 
   main();
 } catch (error) {
-  core.setFailed(error.message);
+  setFailed(error.message);
 }
