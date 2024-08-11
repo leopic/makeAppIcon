@@ -1,4 +1,4 @@
-name: PR Stats
+name: Time to First Review
 
 on:
   workflow_dispatch:
