@@ -1,6 +1,6 @@
-const moment = require("moment");
+import moment from "moment";
 
-export const calculateTimeDifference = (startDate, endDate) => {
+module.exports = (startDate, endDate) => {
   const start = moment(startDate);
   const end = moment(endDate);
   return end.diff(start, "hours");

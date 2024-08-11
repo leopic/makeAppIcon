@@ -1,8 +1,8 @@
-const axios = require("axios");
+import { get } from "axios";
 
-export const fetchPullRequests = async (repo, token, numPRs) => {
+module.exports = async (repo, token, numPRs) => {
   try {
-    const response = await axios.get(
+    const response = await get(
       `https://api.github.com/repos/${repo}/pulls?state=closed&per_page=${numPRs}`,
       {
         headers: { Authorization: `token ${token}` },

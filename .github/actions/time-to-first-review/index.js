@@ -1,8 +1,9 @@
 import { getInput, setFailed } from "@actions/core";
 
-import fetchPullRequests from "./src/fetch-pull-requests";
-import fetchReviews from "./src/fetch-reviews";
-import calculateTimeDifference from "./src/calculate-time-difference";
+const fetchPullRequests = require("./src/fetch-pull-requests").default;
+const fetchReviews = require("./src/fetch-reviews").default;
+const calculateTimeDifference =
+  require("./src/calculate-time-difference").default;
 
 try {
   // GitHub repository information
