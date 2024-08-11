@@ -1,6 +1,7 @@
 name: Time to First Review
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
