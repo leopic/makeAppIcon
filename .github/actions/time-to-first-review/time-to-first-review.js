@@ -6,6 +6,10 @@ const REPO = process.argv[2];
 const GITHUB_TOKEN = process.argv[3];
 const NUM_PRS = process.argv[4] || 500;
 
+console.debug(`REPO: ${REPO}`);
+console.debug(`GITHUB_TOKEN: ${GITHUB_TOKEN}`);
+console.debug(`NUM_PRS: ${NUM_PRS}`);
+
 // Function to calculate the time difference in hours
 const calculateTimeDifference = (startDate, endDate) => {
   const start = moment(startDate);

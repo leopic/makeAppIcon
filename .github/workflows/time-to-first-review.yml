@@ -9,9 +9,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Print environment variables
+        run: env
+      - name: List files in the workspace
+        run: ls -la
       - name: Run Time to First Review Action
         uses: ./.github/actions/time-to-first-review
         with:
           repo: "leopic/makeAppIcon"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
           num_prs: 100
