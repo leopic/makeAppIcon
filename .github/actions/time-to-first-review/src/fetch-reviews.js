@@ -1,4 +1,4 @@
-const require = require("axios");
+const axios = require("axios");
 
 // Fetch reviews for a specific PR
 module.exports = async (repo, token, prNumber) => {

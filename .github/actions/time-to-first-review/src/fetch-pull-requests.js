@@ -1,4 +1,4 @@
-const require = require("axios");
+const axios = require("axios");
 
 module.exports = async (repo, token, numPRs) => {
   try {
