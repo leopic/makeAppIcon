@@ -66,7 +66,7 @@ const main = async () => {
 
     if (!firstReviewDate) {
       console.log(`PR #${pr.number} - No reviews found`);
-      return;
+      continue;
     }
 
     const timeToFirstReview = calculateTimeDifference(
