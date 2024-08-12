@@ -1,4 +1,3 @@
-// const axios = require("axios");
 const github = require("@actions/github");
 
 // Fetch reviews for a specific PR
@@ -12,19 +11,6 @@ module.exports = async (repo, token, prNumber) => {
       pull_number: prNumber,
     });
 
-    // const response = await axios.get(
-    //   `https://api.github.com/repos/${repo}/pulls/${prNumber}/reviews`,
-    //   {
-    //     headers: { Authorization: `token ${token}` },
-    //   }
-    // );
-
-    // console.log(" - - - ");
-    // console.log(data);
-    // console.log(response.data);
-    // console.log(" - - - ");
-
-    // return response.data;
     return data;
   } catch (error) {
     console.error(`Error fetching reviews for PR #${prNumber}:`, error.message);
