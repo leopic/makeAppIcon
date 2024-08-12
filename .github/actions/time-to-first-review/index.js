@@ -42,9 +42,11 @@ try {
     const prs = await fetchPullRequests(repo, token, maxPRs);
 
     let timesToFirstReview = await Promise.all(
-      prs
-        .map((pr) => getTimeToFirstReview(pr, repo, token))
-        .filter((time) => time)
+      prs.map((pr) => getTimeToFirstReview(pr, repo, token))
+    );
+
+    timesToFirstReview = timesToFirstReview.filter(
+      (time) => time !== undefined
     );
 
     console.log("All times to first review:", timesToFirstReview);
