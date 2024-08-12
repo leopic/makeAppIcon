@@ -42,8 +42,10 @@ try {
     const prs = await fetchPullRequests(repo, token, maxPRs);
 
     let timesToFirstReview = await Promise.all(
-      prs.map((pr) => getTimeToFirstReview(pr, repo, token))
-    ).filter((time) => time);
+      prs
+        .map((pr) => getTimeToFirstReview(pr, repo, token))
+        .filter((time) => time)
+    );
 
     if (timesToFirstReview.length > 0) {
       const total = timesToFirstReview.reduce((sum, value) => sum + value, 0);
