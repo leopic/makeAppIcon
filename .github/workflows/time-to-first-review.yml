@@ -13,6 +13,6 @@ jobs:
       - name: Run Time to First Review Action
         uses: ./.github/actions/time-to-first-review
         with:
-          repo: "KaeruCT/my-stop"
+          repo: "zenjob/zenjob-ios"
           github_token: ${{ github.token }}
           num_prs: 5

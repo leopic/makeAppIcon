@@ -21,7 +21,7 @@ module.exports = async (repo, token, prNumber) => {
       pull_number: prNumber,
     });
 
-    console.log(reviews);
+    // console.log(reviews);
 
     return reviews;
 
