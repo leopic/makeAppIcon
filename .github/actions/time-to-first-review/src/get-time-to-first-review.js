@@ -7,7 +7,7 @@ module.exports = async (pr, repo, gitHubToken) => {
 
   // Find the first review date
   const firstReviewDate = reviews
-    .map((review) => review.submitted_at)
+    .map((review) => review.created_at)
     .filter((date) => date) // filter out null or undefined
     .sort()[0]; // Get the earliest review date
 
