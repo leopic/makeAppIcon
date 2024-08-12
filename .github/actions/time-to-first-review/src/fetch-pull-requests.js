@@ -1,4 +1,3 @@
-const axios = require("axios");
 const github = require("@actions/github");
 
 module.exports = async (repo, token, numPRs) => {
@@ -13,13 +12,6 @@ module.exports = async (repo, token, numPRs) => {
     });
 
     return pullRequests;
-    // const response = await axios.get(
-    //   `https://api.github.com/repos/${repo}/pulls?state=closed&per_page=${numPRs}`,
-    //   {
-    //     headers: { Authorization: `token ${token}` },
-    //   }
-    // );
-    // return response.data;
   } catch (error) {
     console.error("Error fetching pull requests:", error.message);
     return [];
