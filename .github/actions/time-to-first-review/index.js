@@ -16,7 +16,7 @@ const getTimeToFirstReview = async (pr, repo, gitHubToken) => {
 
   if (!firstReviewDate) {
     console.log(`PR #${pr.number} - No reviews found`);
-    return;
+    return undefined;
   }
 
   const timeToFirstReview = calculateTimeDifference(
@@ -46,6 +46,8 @@ try {
         .map((pr) => getTimeToFirstReview(pr, repo, token))
         .filter((time) => time)
     );
+
+    console.log("All times to first review:", timesToFirstReview);
 
     if (timesToFirstReview.length > 0) {
       const total = timesToFirstReview.reduce((sum, value) => sum + value, 0);
