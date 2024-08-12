@@ -1,4 +1,4 @@
-const axios = require("axios");
+// const axios = require("axios");
 const github = require("@actions/github");
 
 // Fetch reviews for a specific PR
@@ -6,25 +6,26 @@ module.exports = async (repo, token, prNumber) => {
   try {
     const octokit = github.getOctokit(token);
 
-    const out = await octokit.rest.pulls.listReviews({
+    const { data } = await octokit.rest.pulls.listReviews({
       owner: repo.split("/")[0],
       repo: repo.split("/")[1],
       pull_number: prNumber,
     });
 
-    const response = await axios.get(
-      `https://api.github.com/repos/${repo}/pulls/${prNumber}/reviews`,
-      {
-        headers: { Authorization: `token ${token}` },
-      }
-    );
+    // const response = await axios.get(
+    //   `https://api.github.com/repos/${repo}/pulls/${prNumber}/reviews`,
+    //   {
+    //     headers: { Authorization: `token ${token}` },
+    //   }
+    // );
 
-    console.log(" - - - ");
-    console.log(out);
-    console.log(response.data);
-    console.log(" - - - ");
+    // console.log(" - - - ");
+    // console.log(data);
+    // console.log(response.data);
+    // console.log(" - - - ");
 
-    return response.data;
+    // return response.data;
+    return data;
   } catch (error) {
     console.error(`Error fetching reviews for PR #${prNumber}:`, error.message);
     return [];
