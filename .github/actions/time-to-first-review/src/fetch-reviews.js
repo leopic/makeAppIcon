@@ -6,7 +6,7 @@ module.exports = async (repo, token, prNumber) => {
   try {
     const octokit = github.getOctokit(token);
 
-    const out = await octokit.pulls.listReviews({
+    const out = octokit.rest.pulls.listReviews({
       owner: repo.split("/")[0],
       repo: repo.split("/")[1],
       pull_number: prNumber,
