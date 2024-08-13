@@ -26,9 +26,10 @@ const fetchReviews = require("../fetch-reviews");
 describe("fetchReviews", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
-  it("logs an error to the console when the request fails", async () => {
+  it("should log an error to the console when the request fails", async () => {
     const mockError = new Error("Request failed");
     mockListReviews.mockRejectedValueOnce(mockError);
 
@@ -42,10 +43,8 @@ describe("fetchReviews", () => {
       "Error fetching reviews for PR #3:",
       "Request failed"
     );
-
-    consoleErrorSpy.mockRestore();
   });
-  it("correctly parses and creates the request for reviews of a single PR", async () => {
+  it("should parse and create the request for reviews of a single PR", async () => {
     const reviews = await fetchReviews("owner/repo", "token", 3);
 
     expect(reviews.length).toBe(2);
