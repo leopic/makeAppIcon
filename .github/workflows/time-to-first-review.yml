@@ -14,5 +14,5 @@ jobs:
         uses: ./.github/actions/time-to-first-review
         with:
           repo: "KaeruCT/my-stop"
-          github_token: ${{ github.token }}
+          token: ${{ github.token }}
           num_prs: 5
